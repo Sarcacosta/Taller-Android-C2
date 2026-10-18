@@ -1,0 +1,27 @@
+# Visual Studio
+.vs/
+**/.vs/
+
+# .NET
+bin/
+obj/
+**/bin/
+**/obj/
+
+# Visual Studio user files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# Configuración local
+appsettings.Development.json
+.env
+.env.*
+
+# Sistema
+.DS_Store
+Thumbs.db

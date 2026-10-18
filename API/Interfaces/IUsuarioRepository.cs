@@ -1,0 +1,18 @@
+using UsuariosApi.Entities;
+
+namespace UsuariosApi.Interfaces;
+
+public interface IUsuarioRepository
+{
+    Task<List<Usuario>> ObtenerTodosAsync();
+
+    Task<Usuario?> ObtenerPorIdAsync(int id);
+
+    Task<Usuario?> ObtenerPorCorreoAsync(string correo);
+
+    Task<Usuario> CrearAsync(Usuario usuario);
+
+    Task ActualizarAsync(Usuario usuario);
+
+    Task EliminarAsync(Usuario usuario);
+}

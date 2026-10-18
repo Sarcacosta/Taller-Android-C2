@@ -1,0 +1,47 @@
+@base = http://localhost:62129
+
+### Registro válido devuelve 201 y un DTO sin contraseña ni hash
+POST {{base}}/api/Usuarios
+Content-Type: application/json
+
+{
+  "nombre": "Alexander",
+  "apellido": "Pérez",
+  "correo": "alexander.taller@example.com",
+  "password": "Taller2026!",
+  "fechaNacimiento": "2005-06-15",
+  "universidad": "UCompensar",
+  "semestre": 3
+}
+
+### Repetir el registro anterior devuelve 400 con mensaje de correo duplicado
+POST {{base}}/api/Usuarios
+Content-Type: application/json
+
+{
+  "nombre": "Alexander", "apellido": "Pérez",
+  "correo": "alexander.taller@example.com", "password": "Taller2026!",
+  "fechaNacimiento": "2005-06-15", "universidad": "UCompensar", "semestre": 3
+}
+
+### Login devuelve la información del usuario autenticado
+POST {{base}}/api/Usuarios/login
+Content-Type: application/json
+
+{ "correo": "alexander.taller@example.com", "password": "Taller2026!" }
+
+### Contraseña incorrecta devuelve 401
+POST {{base}}/api/Usuarios/login
+Content-Type: application/json
+
+{ "correo": "alexander.taller@example.com", "password": "incorrecta" }
+
+### Semestre inválido devuelve 400
+POST {{base}}/api/Usuarios
+Content-Type: application/json
+
+{
+  "nombre": "Ana", "apellido": "Díaz", "correo": "ana@example.com",
+  "password": "Taller2026!", "fechaNacimiento": "2005-01-01",
+  "universidad": "UCompensar", "semestre": 11
+}
